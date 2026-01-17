@@ -1,4 +1,4 @@
-name: Build CIT Resewn 1.21.5
+name: Build CIT Resewn 1.21.11
 
 on:
   workflow_dispatch:
@@ -17,11 +17,11 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Patch version to 1.21.5
+      - name: Patch version to 1.21.11
         run: |
-          sed -i 's/minecraft_version=.*/minecraft_version=1.21.5/' gradle.properties
-          sed -i 's/fabric_loader_version=.*/fabric_loader_version=0.15.7/' gradle.properties
-          sed -i 's/fabric_api_version=.*/fabric_api_version=0.100.0+1.21.5/' gradle.properties
+          sed -i 's/minecraft_version=.*/minecraft_version=1.21.11/' gradle.properties
+          sed -i 's/fabric_loader_version=.*/fabric_loader_version=0.18.4/' gradle.properties
+          sed -i 's/fabric_api_version=.*/fabric_api_version=0.141.1+1.21.11/' gradle.properties
 
       - name: Grant gradlew permission
         run: chmod +x ./gradlew
@@ -32,5 +32,5 @@ jobs:
       - name: Upload output jar
         uses: actions/upload-artifact@v4
         with:
-          name: CIT-Resewn-1.21.5
+          name: CIT-Resewn-1.21.11
           path: build/libs/*.jar
